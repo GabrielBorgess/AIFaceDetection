@@ -1,9 +1,8 @@
-![image](https://github.com/GabrielBorgess/SmartBrain/assets/99661380/3b5088bf-53cc-48f4-94c7-5af745dd0a2e)
+![image](https://github.com/GabrielBorgess/AIFaceDetection/assets/99661380/f79ad1b9-d3a2-4d6f-87af-9aeeb4f13df2)
 
-![image](https://github.com/GabrielBorgess/SmartBrain/assets/99661380/c7c614bf-224a-47fc-a308-454ce8a959d7)
+![image](https://github.com/GabrielBorgess/AIFaceDetection/assets/99661380/2bc92837-d2e4-4df3-ad60-664584aa93af)
 
-![image](https://github.com/GabrielBorgess/SmartBrain/assets/99661380/19317bf6-b423-47dd-a548-4b411c05ee0d)
-
+![image](https://github.com/GabrielBorgess/AIFaceDetection/assets/99661380/23541cf8-4877-4d50-91e9-9ea6819b6b90)
 
 # React + TypeScript + Vite
 
