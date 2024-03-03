@@ -1,6 +1,9 @@
 const Navigation = () => {
   return (
-    <div>Navigation component</div>
+    <div className="p-12 flex justify-between">
+      <div>Logo</div>
+      <div className="">Entrar</div>
+    </div>
   )
 }
 

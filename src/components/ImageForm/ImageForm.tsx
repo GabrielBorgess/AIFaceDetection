@@ -90,11 +90,11 @@ const ImageForm: React.FC<ImageFormProps> = (props) => {
     }
 
     return (
-        <div>
-            <h3>Image Detection Aplication</h3>
-            <div>
-                <input type="text" onChange={(event)=>{props.setInputValue(event.target.value)}}/>
-                <button onClick={handleInput}>Detect</button>
+        <div className="flex flex-col items-center gap-2">
+            <h3 className="text-base">Image Detection Aplication</h3>
+            <div className=" flex gap-4 flex-col w-screen items-center">
+                <input className="w-1/2 min-w-96 h-14 p-6 rounded-2xl" type="text" onChange={(event)=>{props.setInputValue(event.target.value)}}/>
+                <button className="bg-white py-4 px-10" onClick={handleInput}>Detect</button>
             </div>
         </div>
     )

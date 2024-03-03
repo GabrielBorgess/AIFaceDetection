@@ -12,7 +12,7 @@ interface FaceRecognitionProps {
 
 const FaceRecognition: React.FC<FaceRecognitionProps> = ({ inputValue, imagePosition }) => {
     return(
-        <div style={{position: 'absolute'}}>
+        <div className='relative'>
             <img id="image" src={inputValue}/>
             <div className="boundBox" style={{top: imagePosition.top, left: imagePosition.left, bottom: imagePosition.bottom, right: imagePosition.right}}></div>
         </div>
