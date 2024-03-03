@@ -1,6 +1,6 @@
 const Rank = () => {
     return(
-        <div className="text-3xl">Rank will be here</div>
+        <div className="text-4xl font-extrabold">AI Facial Recognition</div>
     )
 };
 

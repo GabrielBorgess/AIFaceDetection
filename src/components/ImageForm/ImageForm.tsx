@@ -1,3 +1,5 @@
+import './ImageForm.css'
+
 interface ImageFormProps {
     setImagePosition: React.Dispatch<React.SetStateAction<{ top: number; left: number; bottom: number; right: number; }>>;
     inputValue: string,
@@ -56,26 +58,28 @@ const ImageForm: React.FC<ImageFormProps> = (props) => {
                 const regions = result.outputs[0].data.regions;
 
                 regions.forEach((region: { region_info: { bounding_box: BoundingBox; }; data: { concepts: { name: number; value: number; }[]; }; }) => {
-                    // Accessing and rounding the bounding box values
                     const boundingBox = region.region_info.bounding_box;
                     const topRow = boundingBox.top_row.toFixed(3);
                     const leftCol = boundingBox.left_col.toFixed(3);
                     const bottomRow = boundingBox.bottom_row.toFixed(3);
                     const rightCol = boundingBox.right_col.toFixed(3);
 
-                    region.data.concepts.forEach((concept: { name: number; value: number; }) => {
+                    props.setImagePosition(createImageBox(Number(topRow), Number(leftCol), Number(bottomRow), Number(rightCol)))
+
+                    //Console das Posições
+                    /*region.data.concepts.forEach((concept: { name: number; value: number; }) => {
                         const name = concept.name;
                         const value = concept.value.toFixed(4);
-                        console.log(`${name}: ${value} BBox: ${topRow}, ${leftCol}, ${bottomRow}, ${rightCol}`);
+                        //console.log(`${name}: ${value} BBox: ${topRow}, ${leftCol}, ${bottomRow}, ${rightCol}`);
                         props.setImagePosition(createImageBox(Number(topRow), Number(leftCol), Number(bottomRow), Number(rightCol)))
-                    });
+                    });*/
                 });
 
             })
             .catch(error => console.log('error', error));
     }
 
-    //Criao objeto com as posicoes 
+    //Criar objeto com as posicoes 
     function createImageBox(top: number, left: number, bottom: number, right: number){
         const image = document.getElementById('image');
         const width = image?.clientWidth || 0
@@ -90,11 +94,11 @@ const ImageForm: React.FC<ImageFormProps> = (props) => {
     }
 
     return (
-        <div className="flex flex-col items-center gap-2">
-            <h3 className="text-base">Image Detection Aplication</h3>
-            <div className=" flex gap-4 flex-col w-screen items-center">
-                <input className="w-1/2 min-w-96 h-14 p-6 rounded-2xl" type="text" onChange={(event)=>{props.setInputValue(event.target.value)}}/>
-                <button className="bg-white py-4 px-10" onClick={handleInput}>Detect</button>
+        <div className="flex flex-col items-center gap-3">
+            <h3 className="text-base">Please insert your image URL here:</h3>
+            <div className=" flex justify-center w-screen items-center">
+                <input id="inputUrl" className="w-2/5 min-w-96 h-14 p-6  border-2 text-center" type="text" onChange={(event)=>{props.setInputValue(event.target.value)}}/>
+                <button id="buttonDetectUrl" className="bg-orange-500 py-4 px-10 text-white font-semibold" onClick={handleInput}>Detect</button>
             </div>
         </div>
     )

@@ -1,12 +1,12 @@
 .boundBox{
     position: absolute;
-    box-shadow: 0 0 0 2px blue inset;
+    box-shadow: 0 0 0 2px rgb(249, 115, 22) inset;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 #image{
-    height: 500px;
+    max-height: 450px;
     width: auto;
 }
