@@ -1,17 +1,14 @@
-import { useState } from "react";
-
-const ImageForm = () => {
-    const [inputValue, setInputValue] = useState<string>('');
+const ImageForm = (props: { inputValue: string; setInputValue: (arg0: string) => void; }) => {
 
     //Call api with image url
     function handleInput(){
-        console.log(inputValue)
+        console.log(props.inputValue)
         const PAT = '1560b6cd9e6e4b48ad49a739f55f09c6';
         const USER_ID = 'borgesgabriel';
         const APP_ID = 'SmartBrain';
         const MODEL_ID = 'face-detection';
         const MODEL_VERSION_ID = '6dc7e46bc9124c5c8824be4822abe105';
-        const IMAGE_URL = inputValue;
+        const IMAGE_URL = props.inputValue;
 
         const raw = JSON.stringify({
             "user_app_id": {
@@ -75,7 +72,7 @@ const ImageForm = () => {
         <div>
             <h3>Image Detection Aplication</h3>
             <div>
-                <input type="text" onChange={(event)=>{setInputValue(event.target.value)}}/>
+                <input type="text" onChange={(event)=>{props.setInputValue(event.target.value)}}/>
                 <button onClick={handleInput}>Detect</button>
             </div>
         </div>

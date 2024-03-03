@@ -1,7 +1,11 @@
-const FaceRecognition = () => {
+interface FaceRecognitionProps {
+    inputValue: string;
+}
+
+const FaceRecognition: React.FC<FaceRecognitionProps> = ({ inputValue }) => {
     return(
         <div>
-            <img src="https://samples.clarifai.com/metro-north.jpg" alt="" />
+            <img src={inputValue}/>
         </div>
     )
 };
