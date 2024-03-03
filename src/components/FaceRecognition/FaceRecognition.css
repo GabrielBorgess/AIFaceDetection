@@ -1,0 +1,12 @@
+.boundBox{
+    position: absolute;
+    box-shadow: 0 0 0 2px blue inset;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#image{
+    height: 500px;
+    width: auto;
+}

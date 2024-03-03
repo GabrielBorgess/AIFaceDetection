@@ -1,4 +1,10 @@
-const ImageForm = (props: { inputValue: string; setInputValue: (arg0: string) => void; }) => {
+interface ImageFormProps {
+    setImagePosition: React.Dispatch<React.SetStateAction<{ top: number; left: number; bottom: number; right: number; }>>;
+    inputValue: string,
+    setInputValue: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const ImageForm: React.FC<ImageFormProps> = (props) => {
 
     //Call api with image url
     function handleInput(){
@@ -49,7 +55,7 @@ const ImageForm = (props: { inputValue: string; setInputValue: (arg0: string) =>
 
                 const regions = result.outputs[0].data.regions;
 
-                regions.forEach((region: { region_info: { bounding_box: BoundingBox; }; data: { concepts: { name: string; value: number; }[]; }; }) => {
+                regions.forEach((region: { region_info: { bounding_box: BoundingBox; }; data: { concepts: { name: number; value: number; }[]; }; }) => {
                     // Accessing and rounding the bounding box values
                     const boundingBox = region.region_info.bounding_box;
                     const topRow = boundingBox.top_row.toFixed(3);
@@ -57,15 +63,30 @@ const ImageForm = (props: { inputValue: string; setInputValue: (arg0: string) =>
                     const bottomRow = boundingBox.bottom_row.toFixed(3);
                     const rightCol = boundingBox.right_col.toFixed(3);
 
-                    region.data.concepts.forEach((concept: { name: string; value: number; }) => {
+                    region.data.concepts.forEach((concept: { name: number; value: number; }) => {
                         const name = concept.name;
                         const value = concept.value.toFixed(4);
                         console.log(`${name}: ${value} BBox: ${topRow}, ${leftCol}, ${bottomRow}, ${rightCol}`);
+                        props.setImagePosition(createImageBox(Number(topRow), Number(leftCol), Number(bottomRow), Number(rightCol)))
                     });
                 });
 
             })
             .catch(error => console.log('error', error));
+    }
+
+    //Criao objeto com as posicoes 
+    function createImageBox(top: number, left: number, bottom: number, right: number){
+        const image = document.getElementById('image');
+        const width = image?.clientWidth || 0
+        const height = image?.clientHeight || 0
+        console.log(top)
+        return {
+            top: top * height,
+            left: left * width,
+            bottom: height - (bottom * height), 
+            right: width - (right * width)
+        }
     }
 
     return (
