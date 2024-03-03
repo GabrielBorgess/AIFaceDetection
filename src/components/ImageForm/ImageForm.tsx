@@ -10,7 +10,6 @@ const ImageForm: React.FC<ImageFormProps> = (props) => {
 
     //Call api with image url
     function handleInput(){
-        console.log(props.inputValue)
         const PAT = '1560b6cd9e6e4b48ad49a739f55f09c6';
         const USER_ID = 'borgesgabriel';
         const APP_ID = 'SmartBrain';
@@ -84,7 +83,6 @@ const ImageForm: React.FC<ImageFormProps> = (props) => {
         const image = document.getElementById('image');
         const width = image?.clientWidth || 0
         const height = image?.clientHeight || 0
-        console.log(top)
         return {
             top: top * height,
             left: left * width,
@@ -97,7 +95,7 @@ const ImageForm: React.FC<ImageFormProps> = (props) => {
         <div className="flex flex-col items-center gap-3">
             <h3 className="text-base">Please insert your image URL here:</h3>
             <div className=" flex justify-center w-screen items-center">
-                <input id="inputUrl" className="w-2/5 min-w-96 h-14 p-6  border-2 text-center" type="text" onChange={(event)=>{props.setInputValue(event.target.value)}}/>
+                <input id="inputUrl" value={props.inputValue} className="w-2/5 min-w-96 h-14 p-6  border-2 text-center" type="text" onChange={(event)=>{props.setInputValue(event.target.value)}}/>
                 <button id="buttonDetectUrl" className="bg-orange-500 py-4 px-10 text-white font-semibold" onClick={handleInput}>Detect</button>
             </div>
         </div>

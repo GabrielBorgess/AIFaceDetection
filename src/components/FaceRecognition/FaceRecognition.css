@@ -1,6 +1,5 @@
 .boundBox{
     position: absolute;
-    border-radius: 5px;
     box-shadow: 0 0 0 2px rgb(249, 115, 22) inset;
     display: flex;
     flex-wrap: wrap;
